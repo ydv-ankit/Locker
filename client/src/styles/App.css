@@ -63,6 +63,10 @@ form{
     color: aliceblue;
 }
 
+.details input:focus {
+    border: 2px solid rgb(51, 134, 235);
+}
+
 .btn{
     display: flex;
     align-items: center;
@@ -76,10 +80,6 @@ form{
     width: 80%;
     border: 2px solid rgb(5, 152, 244);
     transition: 0.2s;
-}
-
-.details input:focus {
-    border: 1px solid rgb(23, 45, 241);
 }
 
 .error{

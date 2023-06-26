@@ -1,14 +1,16 @@
 import React from "react";
 import '../styles/Data.css'
+import Loader from "./Loader";
 
-const Data = () =>{
-    return(
-        <div className="data-container">
-            <div className="content">
-                Lorem ipsum dolor sit amet consectetur adipisicing elit. Debitis, perspiciatis veritatis unde beatae, molestiae dolorem velit, eaque quibusdam ipsum praesentium corporis minima laborum optio sequi doloremque voluptas mollitia quidem. Aliquam, quidem culpa.x
-            </div>
-        </div>
-    );
+const Data = ({props}) =>{
+
+    const data = false;
+
+    if(!data){
+        return(
+            <Loader/>
+        )
+    }
 }
 
 export default Data;
