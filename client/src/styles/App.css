@@ -1,0 +1,115 @@
+.container {
+    width: 600px;
+    margin: auto;
+    margin-top: 150px;
+    height: 600px;
+    border: 3px solid rgb(162, 75, 243);
+    border-radius: 10px;
+    background-color: rgb(91, 15, 138);
+
+    box-shadow: 0px 0px 20px rgb(222, 156, 234);
+}
+
+.box{
+    margin-top: 30px;
+    padding: 20px;
+    color: cadetblue;
+}
+
+.head{
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    color: whitesmoke;
+}
+
+.head div{
+    font-size: 30px;
+    margin: 0px 10px 0px 10px;
+}
+
+.side{
+    border-bottom: 2px solid cadetblue;
+    width: 25%;
+}
+
+.content{
+    display: flex;
+    margin: auto;
+    margin-top: 40px;
+    padding: 20px;
+}
+
+form{
+    width: 70% ;
+    margin: auto;
+}
+
+.details{
+    margin: 20px 0px 20px 0px;
+    display: flex;
+    justify-content: center;
+}
+
+.details input{
+    width: 95%;
+    background: none;
+    border: 1px solid cadetblue;
+    border-radius: 10px;
+    outline: none;
+    font-size: 20px;
+    padding: 10px;
+    color: aliceblue;
+}
+
+.btn{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.btn input{
+    margin-top: 30px;
+    border-radius: 30px;
+    cursor: pointer;
+    width: 80%;
+    border: 2px solid rgb(5, 152, 244);
+    transition: 0.2s;
+}
+
+.details input:focus {
+    border: 1px solid rgb(23, 45, 241);
+}
+
+.error{
+    color: tomato;
+}
+
+.btn input:hover{
+    background-color: rgb(11, 178, 228);
+    border: 2px solid rgb(11, 178, 228);
+    box-shadow: 0px 0px 4px 1px #2d9aff;
+    transform: scale(1.1);
+    transition: 0.3s;
+}
+
+.container-login{
+    width: 500px;
+}
+
+.forgot-btn input{
+    border-radius: 30px;
+    cursor: pointer;
+    width: 80%;
+    border: 2px solid rgb(5, 152, 244);
+    transition: 0.2s;
+}
+
+.forgot-btn input:hover{
+    background-color: rgb(222, 30, 23);
+    border: 2px solid rgb(54, 97, 190);
+    box-shadow: 0px 0px 4px 1px #c71212;
+    transform: scale(1.1);
+    transition: 0.2s;
+}

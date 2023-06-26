@@ -1,0 +1,9 @@
+.data-container{
+    width: 600px;
+    margin: auto;
+    background-color: rgb(27, 102, 188);
+}
+
+.content{
+    color: white;
+}
