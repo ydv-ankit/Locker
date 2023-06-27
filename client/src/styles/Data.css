@@ -1,10 +1,22 @@
-.data-container{
-    width: 600px;
+.container-wide {
+    width: 800px;
     margin: auto;
-    background-color: rgb(27, 102, 188);
+    margin-top: 150px;
+    height: 90vh;
+    border-radius: 10px;
+    background-color: rgb(91, 15, 138);
+    /* box-shadow: 0px 0px 20px rgb(222, 156, 234); */
+    display: flex;
+    flex-wrap: wrap;
+    overflow-y: scroll;
 }
 
-.content{
-    border: 2px solid white;
-    color: white;
+/* no scrollbar */
+::-webkit-scrollbar {
+    width: 1px;
+}
+
+/* Handle on hover */
+::-webkit-scrollbar-thumb:hover {
+    background: none;
 }

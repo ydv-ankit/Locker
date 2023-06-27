@@ -1,12 +1,11 @@
 .container {
-    width: 600px;
+    width: 500px;
     margin: auto;
     margin-top: 150px;
-    height: 600px;
+    height: fit-content;
     border: 3px solid rgb(162, 75, 243);
     border-radius: 10px;
     background-color: rgb(91, 15, 138);
-
     box-shadow: 0px 0px 20px rgb(222, 156, 234);
 }
 
@@ -64,7 +63,8 @@ form{
 }
 
 .details input:focus {
-    border: 2px solid rgb(51, 134, 235);
+    border: 1px solid rgb(235, 51, 189);
+    background-color: none;
 }
 
 .btn{
@@ -83,7 +83,8 @@ form{
 }
 
 .error{
-    color: tomato;
+    color: rgb(255, 121, 121);
+    height: 10px;
 }
 
 .btn input:hover{
@@ -94,13 +95,10 @@ form{
     transition: 0.3s;
 }
 
-.container-login{
-    width: 500px;
-}
-
 .forgot-btn input{
     border-radius: 30px;
     cursor: pointer;
+    margin-top: 20px;
     width: 80%;
     border: 2px solid rgb(5, 152, 244);
     transition: 0.2s;
@@ -112,4 +110,8 @@ form{
     box-shadow: 0px 0px 4px 1px #c71212;
     transform: scale(1.1);
     transition: 0.2s;
+}
+
+.login{
+    margin-top: -10px;
 }
