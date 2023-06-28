@@ -34,7 +34,7 @@ const dataSchema = new mongoose.Schema({
     },
     site: {
         type: String,
-        required: true
+        required: [true, 'site name requied']
     },
     url: {
         type: String
@@ -44,11 +44,11 @@ const dataSchema = new mongoose.Schema({
     },
     email: {
         type: String,
-        required: true,
+        required: [true, 'email id required']
     },
     password: {
         type: String,
-        required: true
+        required: [true, 'password required']
     },
     other_details: {
         type: String,

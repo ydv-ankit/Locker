@@ -9,6 +9,7 @@ const Data = ({ props }) => {
     const navigate = useNavigate()
 
     const [userData, setUserData] = useState([]);
+    const [error, setError] = useState(null)
     const [isLoading, setIsLoading] = useState(true);
 
     const getData = async (id) => {
@@ -23,9 +24,15 @@ const Data = ({ props }) => {
                 })
             })
             const data = await response.json()
+            console.log(data)
+            if (data.error) {
+                setError("ERROR!! Try again later ...")
+                return null
+            }
             return data
         } catch (err) {
-            return err
+                setError("SERVER ERROR !!")
+                return null
         }
     }
 
@@ -52,7 +59,7 @@ const Data = ({ props }) => {
         }
         setTimeout(() =>
             setIsLoading(false), 3000)
-    }, [])
+    }, [navigate])
 
 
     if (isLoading) {
@@ -64,13 +71,13 @@ const Data = ({ props }) => {
     return (
         <>
             <div className="container-wide">
-                {userData.length !== 0 && userData.map((data, index) => {
+                {userData !== null && userData.map((data, index) => {
                     return (
                         <Card key={index} site={data.site} url={data.url} username={data.username} email={data.email} password={data.password} other_details={data.other_details} />
                     )
                 })}
                 <div className="add">
-                    <div className="text">{userData.length === 0 ? "No Data available" : ""}</div>
+                    <div className="text">{error != null ? error : (userData.length === 0 ? "No Data available" : "")}</div>
                     <button onClick={handleClick}>Add More</button>
                 </div>
             </div>
