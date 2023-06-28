@@ -13,10 +13,9 @@ app.use(cookieParser())
 app.use(cors())
 
 // variables
-const HOST = 'localhost'
 const PORT = process.env.PORT || 8080
-const dbURI = "mongodb+srv://ankit123:ankit123@cluster0.q6fjelv.mongodb.net/"
-const dbname = "encrypter"
+const dbURI = process.env.dbURI || "mongodb://127.0.0.1:27017/"
+const dbname = process.env.DBName || "encrypter"
 
 // connect with mongoDB
 app.listen(PORT, () => console.log("server running at port:" + PORT))
