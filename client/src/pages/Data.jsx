@@ -2,11 +2,14 @@ import React, { useEffect, useState } from "react";
 import Loader from "./Loader";
 import Card from "./Card";
 import { getPayload, getCookieValue } from '../utils/getPayload.js'
-
+import { useNavigate } from 'react-router-dom'
 import '../styles/Data.css'
 
 const Data = ({ props }) => {
+    const navigate = useNavigate()
+
     const [userData, setUserData] = useState([]);
+    const [isLoading, setIsLoading] = useState(true);
 
     const getData = async (id) => {
         try {
@@ -27,7 +30,7 @@ const Data = ({ props }) => {
     }
 
     function handleClick(e) {
-        window.location.replace('/add')
+        navigate('/add')
     }
 
     useEffect(() => {
@@ -45,12 +48,14 @@ const Data = ({ props }) => {
             }
             fetchData()
         } else {
-            window.location.replace("/");
+            navigate('/')
         }
+        setTimeout(() =>
+            setIsLoading(false), 3000)
     }, [])
 
 
-    if (userData.length === 0) {
+    if (isLoading) {
         return (
             <Loader />
         )
@@ -59,12 +64,13 @@ const Data = ({ props }) => {
     return (
         <>
             <div className="container-wide">
-                {userData.map((data, index) => {
+                {userData.length !== 0 && userData.map((data, index) => {
                     return (
                         <Card key={index} site={data.site} url={data.url} username={data.username} email={data.email} password={data.password} other_details={data.other_details} />
                     )
                 })}
                 <div className="add">
+                    <div className="text">{userData.length === 0 ? "No Data available" : ""}</div>
                     <button onClick={handleClick}>Add More</button>
                 </div>
             </div>

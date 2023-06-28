@@ -26,7 +26,7 @@ const Login = () => {
     setIsloading(true)
 
     try {
-      const response = await fetch(`http://${process.env.RAPID_API_SERVER_HOST}:${process.env.RAPID_API_SERVER_PORT}/login`, {
+      const response = await fetch(`${process.env.REACT_APP_SERVER_HOST}/login`, {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',
@@ -37,7 +37,6 @@ const Login = () => {
 
       if (response.ok) {
         document.cookie = "userToken=" + data.success;
-        // window.location.replace("/data");
         navigate('/data')
       } else {
         // Handle login error based on the response

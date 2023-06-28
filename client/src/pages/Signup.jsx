@@ -29,7 +29,7 @@ const Signup = () => {
     }
     setIsloading(true)
     try {
-      const response = await fetch(`http://${process.env.RAPID_API_SERVER_HOST}:${process.env.RAPID_API_SERVER_PORT}/signup`, {
+      const response = await fetch(`${process.env.REACT_APP_SERVER_HOST}/signup`, {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',
@@ -38,7 +38,7 @@ const Signup = () => {
       });
 
       if (response.ok) {
-        window.location.replace("/");
+        navigate('/')
       } else {
         // Handle signup error based on the response
         const error = await response.json();

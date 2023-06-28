@@ -1,6 +1,7 @@
 {
   "name": "client",
   "version": "0.1.0",
+  "proxy": "https://locker-backend.onrender.com",
   "private": true,
   "dependencies": {
     "react": "^18.2.0",
