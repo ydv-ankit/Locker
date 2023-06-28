@@ -2,7 +2,6 @@ import React, { useEffect, useState } from "react";
 import Loader from "./Loader";
 import Card from "./Card";
 import { getPayload, getCookieValue } from '../utils/getPayload.js'
-// import AddData from './AddData'
 
 import '../styles/Data.css'
 
