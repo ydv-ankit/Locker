@@ -14,7 +14,7 @@ const Data = ({ props }) => {
 
     const getData = async (id) => {
         try {
-            const response = await fetch('http://localhost:8080/userdata', {
+            const response = await fetch(`${process.envRAPID_APP_SERVER_HOST}/userdata`, {
                 method: "POST",
                 headers: {
                     'Content-Type': 'application/json'
@@ -23,6 +23,7 @@ const Data = ({ props }) => {
                     userID: id
                 })
             })
+            console.log(response)
             const data = await response.json()
             if (data.error) {
                 setError("ERROR!! Try again later ...")
@@ -57,7 +58,7 @@ const Data = ({ props }) => {
             navigate('/')
         }
         setTimeout(() =>
-            setIsLoading(false), 3000)
+            setIsLoading(false), 1000)
     }, [navigate])
 
 

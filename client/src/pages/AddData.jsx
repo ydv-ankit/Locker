@@ -37,7 +37,7 @@ const AddData = () => {
     e.preventDefault();
     setIsLoading(true)
     try {
-      const result = await fetch("http://localhost:8080/add", {
+      const result = await fetch(`${process.env.RAPID_API_SERVER_HOST}/add`, {
         method: "POST",
         headers: {
           'Content-Type': 'application/json'
