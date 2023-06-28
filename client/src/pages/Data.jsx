@@ -1,13 +1,35 @@
 import React, { useEffect, useState } from "react";
-import '../styles/Data.css'
 import Loader from "./Loader";
 import Card from "./Card";
 import { getPayload, getCookieValue } from '../utils/getPayload.js'
-import { getData } from "../utils/getData";
+// import AddData from './AddData'
+
+import '../styles/Data.css'
 
 const Data = ({ props }) => {
-
     const [userData, setUserData] = useState([]);
+
+    const getData = async (id) => {
+        try {
+            const response = await fetch('http://localhost:8080/userdata', {
+                method: "POST",
+                headers: {
+                    'Content-Type': 'application/json'
+                },
+                body: JSON.stringify({
+                    userID: id
+                })
+            })
+            const data = await response.json()
+            return data
+        } catch (err) {
+            return err
+        }
+    }
+
+    function handleClick(e) {
+        window.location.replace('/add')
+    }
 
     useEffect(() => {
         const userToken = getCookieValue('userToken')
@@ -24,7 +46,7 @@ const Data = ({ props }) => {
             }
             fetchData()
         } else {
-            console.log("not found")
+            window.location.replace("/");
         }
     }, [])
 
@@ -36,13 +58,18 @@ const Data = ({ props }) => {
     }
 
     return (
-        <div className="container-wide">
-            {userData.map((data, index)=>{
-                return (
-                    <Card key={index} site={data.site} url={data.url} username={data.username} email={data.email} password={data.password} other_details={data.other_details} />
-                )
-            })}
-        </div>
+        <>
+            <div className="container-wide">
+                {userData.map((data, index) => {
+                    return (
+                        <Card key={index} site={data.site} url={data.url} username={data.username} email={data.email} password={data.password} other_details={data.other_details} />
+                    )
+                })}
+                <div className="add">
+                    <button onClick={handleClick}>Add More</button>
+                </div>
+            </div>
+        </>
     )
 }
 

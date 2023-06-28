@@ -40,7 +40,7 @@
     padding: 20px;
 }
 
-form{
+.form{
     width: 70% ;
     margin: auto;
 }
@@ -114,4 +114,13 @@ form{
 
 .login{
     margin-top: -10px;
+}
+
+.no-border input{
+    cursor: pointer;
+    border-radius: 20px;
+}
+
+.no-border input:hover{
+    border: 1px solid red;
 }

@@ -1,13 +1,16 @@
 import React, { useState } from 'react'
 import AuthLoader from './AuthLoader'
+import { useNavigate } from "react-router-dom";
 
-const Signup = () => {
 
+const Login = () => {
+  const navigate = useNavigate();
   const [error_email, setErroremail] = useState('')
   const [error_password, setErrorpassword] = useState('')
 
   const [emailid, setEmailid] = useState('')
   const [password, setPassword] = useState('')
+
   const [isLoading, setIsloading] = useState(false)
 
   async function handleSignup(e) {
@@ -23,7 +26,7 @@ const Signup = () => {
     setIsloading(true)
 
     try {
-      const response = await fetch('http://localhost:8080/login', {
+      const response = await fetch(`http://${process.env.RAPID_API_SERVER_HOST}:${process.env.RAPID_API_SERVER_PORT}/login`, {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',
@@ -34,7 +37,8 @@ const Signup = () => {
 
       if (response.ok) {
         document.cookie = "userToken=" + data.success;
-        window.location.replace("/data");
+        // window.location.replace("/data");
+        navigate('/data')
       } else {
         // Handle login error based on the response
         setErroremail(data.error.email)
@@ -61,10 +65,11 @@ const Signup = () => {
           <span className='side'></span>
         </div>
         <div className="content">
-          <form onSubmit={handleSignup}>
+          <div className='form'>
             <div className="details">
               <input
                 type="email"
+                value={emailid}
                 onChange={(e) => setEmailid(e.target.value)}
                 name='email'
                 placeholder='Email ID'
@@ -75,6 +80,7 @@ const Signup = () => {
             <div className="details">
               <input
                 type="password"
+                value={password}
                 onChange={(e) => setPassword(e.target.value)}
                 name='password'
                 placeholder='Password' required />
@@ -83,16 +89,20 @@ const Signup = () => {
             <div className="details btn login">
               <input
                 type="submit"
-                value={"Login"} />
+                value={"Login"} 
+                onClick={handleSignup} />
             </div>
             <div className="details forgot-btn">
               <input className=' submit' type="submit" value={"Forgot Password"} />
             </div>
-          </form>
+            <div className="details btn">
+              <input type="button" value="Sign Up" onClick={()=>navigate('/signup')} />
+            </div>
+          </div>
         </div>
       </div>
     </div>
   )
 }
 
-export default Signup
+export default Login

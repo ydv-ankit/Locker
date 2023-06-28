@@ -38,13 +38,11 @@ const handleErrors = (err) => {
 
 module.exports.signup_post = async (req, res) => {
     const { name, email, password } = req.body
-    console.log('signing up')
     try {
         const user = await User.create({ name, email, password })
         res.status(201).json({ "success": "signed up successfully"})
     }
     catch (err) {
-        console.log("error signing up : ", err)
         const errors = handleErrors(err)
         res.status(400).send({ "errors": errors })
     }

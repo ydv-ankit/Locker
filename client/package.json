@@ -5,8 +5,12 @@
   "dependencies": {
     "react": "^18.2.0",
     "react-dom": "^18.2.0",
+    "react-native": "^0.72.0",
     "react-router-dom": "^6.14.0",
     "react-scripts": "5.0.1"
+  },
+  "devDependencies": {
+    "@babel/plugin-proposal-private-property-in-object":""
   },
   "scripts": {
     "start": "react-scripts start",

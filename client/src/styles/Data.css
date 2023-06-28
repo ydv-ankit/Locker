@@ -1,7 +1,7 @@
 .container-wide {
     width: 800px;
     margin: auto;
-    margin-top: 150px;
+    margin-top: 50px;
     height: 90vh;
     border-radius: 10px;
     background-color: rgb(91, 15, 138);
@@ -19,4 +19,27 @@
 /* Handle on hover */
 ::-webkit-scrollbar-thumb:hover {
     background: none;
+}
+
+.add{
+    width: fit-content;
+    margin-left: 42%;
+    margin-bottom: 10px;
+}
+
+.add button{
+    font-size: 22px;
+    margin-top: 10px;
+    padding: 5px 15px;
+    background: none;
+    border-radius: 20px;
+    border: 1px solid white;
+    color: white;
+    cursor: pointer;
+}
+
+.add button:hover{
+    transform: scale(1.06);
+    background-color: aliceblue;
+    color: blue;
 }

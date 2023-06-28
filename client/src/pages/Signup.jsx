@@ -1,33 +1,35 @@
-import React, { useState } from 'react'
+import React, { useRef, useState } from 'react'
 import AuthLoader from './AuthLoader'
+import {useNavigate} from 'react-router-dom'
 
 const Signup = () => {
+  const navigate = useNavigate()
 
-  const [error_name, setErrorname] = useState('')
-  const [error_email, setErroremail] = useState('')
-  const [error_password, setErrorpassword] = useState('')
+  const error_name = useRef('')
+  const error_email = useRef('')
+  const error_password = useRef('')
 
-  const [userName, setUsername] = useState('')
-  const [emailid, setEmailid] = useState('')
-  const [password, setPassword] = useState('')
+  const [uservalue, setUservalue] = useState('')
+  const [emailvalue, setEmailvalue] = useState('')
+  const [passwordvalue, setPasswordvalue] = useState('')
+
   const [isLoading, setIsloading] = useState(false)
 
   async function handleSignup(e) {
     e.preventDefault()
-    console.log()
 
-    setErrorname('')
-    setErroremail('')
-    setErrorpassword('')
+    error_name.current = ''
+    error_email.current = ''
+    error_password.current = ''
 
     const req = {
-      name: userName,
-      email: emailid,
-      password: password
+      "name": uservalue,
+      "email": emailvalue,
+      "password": passwordvalue
     }
     setIsloading(true)
     try {
-      const response = await fetch('http://localhost:8080/signup', {
+      const response = await fetch(`http://${process.env.RAPID_API_SERVER_HOST}:${process.env.RAPID_API_SERVER_PORT}/signup`, {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',
@@ -40,15 +42,16 @@ const Signup = () => {
       } else {
         // Handle signup error based on the response
         const error = await response.json();
-        setErrorname(error.errors.name)
-        setErroremail(error.errors.email)
-        setErrorpassword(error.errors.password)
+        error_name.current = error.errors.name
+        error_email.current = error.errors.email
+        error_password.current = error.errors.password
       }
     } catch (error) {
       console.error('Error occurred while making the signup request', error);
     }
     setIsloading(false)
   }
+  
   if (isLoading) {
     return (
       <AuthLoader />
@@ -63,42 +66,48 @@ const Signup = () => {
           <span className='side'></span>
         </div>
         <div className="content">
-          <form onSubmit={handleSignup}>
+          <div className='form'>
             <div className="details">
               <input
                 type="text"
-                onChange={(e) => setUsername(e.target.value)}
+                value={uservalue}
+                onChange={(e) => setUservalue(e.target.value) }
                 name='name'
-                placeholder='Your Name'
+                placeholder='Full Name'
                 spellCheck="false"
                 autoComplete='false' required />
             </div>
-            <div className="error name-error">{error_name}</div>
+            <div className="error name-error">{error_name.current}</div>
             <div className="details">
               <input
                 type="email"
-                onChange={(e) => setEmailid(e.target.value)}
+                value={emailvalue}
+                onChange={(e) => setEmailvalue(e.target.value) }
                 name='email'
                 placeholder='Email ID'
                 spellCheck="false"
                 autoComplete='true' required />
             </div>
-            <div className="error email">{error_email}</div>
+            <div className="error email">{error_email.current}</div>
             <div className="details">
               <input
                 type="password"
-                onChange={(e) => setPassword(e.target.value)}
+                value={passwordvalue}
+                onChange={(e) => setPasswordvalue(e.target.value) }
                 name='password'
                 placeholder='Password' required />
             </div>
-            <div className="error password">{error_password}</div>
+            <div className="error password">{error_password.current}</div>
             <div className="details btn">
               <input
                 type="submit"
                 value={"Sign Up"}
-                className='submit' />
+                className='submit' onClick={handleSignup} />
             </div>
-          </form>
+            <div className="details btn">
+              <input type="button" value="Login" onClick={() => navigate('/')} />
+            </div>
+          </div>
         </div>
       </div>
     </div>
