@@ -28,7 +28,6 @@ const AddData = () => {
     const cookie = getCookieValue('userToken')
     if (cookie) {
       const userID = getPayload(cookie).userID
-      console.log("adding data")
       try {
         const req = {
           userID,

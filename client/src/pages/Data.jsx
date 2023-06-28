@@ -1,9 +1,10 @@
 import React, { useEffect, useState } from "react";
-import Loader from "./Loader";
+import AuthLoader from "./AuthLoader";
 import Card from "./Card";
 import { getPayload, getCookieValue } from '../utils/getPayload.js'
 import { useNavigate } from 'react-router-dom'
 import '../styles/Data.css'
+import Logout from "./Logout";
 
 const Data = () => {
     const navigate = useNavigate()
@@ -23,7 +24,6 @@ const Data = () => {
                     userID: id
                 })
             })
-            console.log(response)
             const data = await response.json()
             if (data.error) {
                 setError("ERROR!! Try again later ...")
@@ -31,8 +31,8 @@ const Data = () => {
             }
             return data
         } catch (err) {
-                setError("Server unreachable !!")
-                return null
+            setError("Server unreachable !!")
+            return null
         }
     }
 
@@ -57,31 +57,29 @@ const Data = () => {
         } else {
             navigate('/')
         }
-        setTimeout(() =>
-            setIsLoading(false), 1000)
+        setIsLoading(false)
     }, [navigate])
 
 
     if (isLoading) {
         return (
-            <Loader />
+            <AuthLoader />
         )
     }
 
     return (
-        <>
-            <div className="container-wide">
-                {userData !== null && userData.map((data, index) => {
-                    return (
-                        <Card key={index} site={data.site} url={data.url} username={data.username} email={data.email} password={data.password} other_details={data.other_details} />
-                    )
-                })}
-                <div className="add">
-                    <div className="text">{error != null ? error : (userData.length === 0 ? "No Data available" : "")}</div>
-                    <button onClick={handleClick}>Add More</button>
-                </div>
+        <div className="container-wide">
+            {userData !== null && userData.map((data, index) => {
+                return (
+                    <Card key={index} site={data.site} url={data.url} username={data.username} email={data.email} password={data.password} other_details={data.other_details} />
+                )
+            })}
+            <div className="add">
+                <div className="text">{error != null ? error : (userData.length === 0 ? "No Data available" : "")}</div>
+                <button onClick={handleClick}>Add More</button>
+                <Logout />
             </div>
-        </>
+        </div>
     )
 }
 

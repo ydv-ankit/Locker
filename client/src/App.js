@@ -3,7 +3,6 @@ import { BrowserRouter, Routes, Route } from 'react-router-dom'
 import Login from './pages/Login'
 import Signup from './pages/Signup'
 import Data from './pages/Data'
-import Footer from './pages/Footer'
 import AddData from './pages/AddData'
 
 import './styles/App.css'
