@@ -15,7 +15,7 @@ app.use(cors())
 // variables
 const HOST = 'localhost'
 const PORT = process.env.PORT || 8080
-const dbURI = "mongodb+srv://ankit123:ankit123@cluster0.q6fjelv.mongodb.net/?retryWrites=true&w=majority"
+const dbURI = "mongodb+srv://ankit123:ankit123@cluster0.q6fjelv.mongodb.net/"
 const dbname = "encrypter"
 
 // connect with mongoDB
