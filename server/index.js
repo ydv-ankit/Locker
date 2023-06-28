@@ -28,7 +28,7 @@ mongoose.connect(dbURI + dbname, { useNewUrlParser: true, useUnifiedTopology: tr
     .catch((err) => console.log(err))
 
 // routes
-app.use('/', (req, res) => {
+app.get('/', (req, res) => {
     res.status(200).end("server running")
 })
 app.use(authRoutes)
