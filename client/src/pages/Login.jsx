@@ -34,9 +34,7 @@ const Login = () => {
         body: JSON.stringify(req),
       });
       const data = await response.json();
-      console.log(data)
       if (response.ok) {
-        console.log("logged in")
         document.cookie = "userToken=" + data.success;
         navigate('/data')
       } else {
@@ -49,7 +47,7 @@ const Login = () => {
     }
     setIsloading(false)
   }
-  
+
   if (isLoading) {
     return (
       <AuthLoader />
@@ -89,14 +87,14 @@ const Login = () => {
             <div className="details btn login">
               <input
                 type="submit"
-                value={"Login"} 
+                value={"Login"}
                 onClick={handleSignup} />
             </div>
-            <div className="details forgot-btn">
-              <input className=' submit' type="submit" value={"Forgot Password"} />
-            </div>
             <div className="details btn">
-              <input type="button" value="Sign Up" onClick={()=>navigate('/signup')} />
+              <input type="button" value="Sign Up" onClick={() => navigate('/signup')} />
+            </div>
+            <div className="details forgot-btn">
+              <input className=' submit' type="submit" value={"Need Help ?"} onClick={() => navigate('/forgot')} />
             </div>
           </div>
         </div>

@@ -5,7 +5,7 @@ import { getPayload, getCookieValue } from '../utils/getPayload.js'
 import { useNavigate } from 'react-router-dom'
 import '../styles/Data.css'
 
-const Data = ({ props }) => {
+const Data = () => {
     const navigate = useNavigate()
 
     const [userData, setUserData] = useState([]);

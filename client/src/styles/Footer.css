@@ -1,0 +1,16 @@
+footer{
+    position: absolute;
+    width: 100%;
+    margin-top: 25px;
+    background-color: aliceblue;
+    z-index: 1;
+    bottom: 0;
+}
+
+.text-center{
+    width: fit-content;
+    margin: auto;
+    font-size: 1.1em;
+    color:blueviolet;
+    padding: 20px;
+}
