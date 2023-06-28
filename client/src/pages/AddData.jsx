@@ -45,7 +45,6 @@ const AddData = () => {
         body: JSON.stringify(req)
       })
       const data = await result.json();
-      console.log(data)
       if (result.ok) {
         navigate('/data')
       } else {
