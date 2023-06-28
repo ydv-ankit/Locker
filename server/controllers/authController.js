@@ -41,7 +41,7 @@ module.exports.signup_post = async (req, res) => {
     console.log("signing up")
     try {
         const user = await User.create({ name, email, password })
-        res.status(201).json({ "success": "signed up successfully"})
+        res.status(201).send({ "success": "signed up successfully"})
     }
     catch (err) {
         console.log("error signing up", err)
@@ -55,11 +55,11 @@ module.exports.login_post = async (req, res) => {
     console.log("logging in")
     try{
         const user = await User.login(email, password)
-        res.status(202).json({"success": getToken(user._id)})
+        res.status(202).send({"success": getToken(user._id)})
     }
     catch(err){
         console.log("error logging in : ", err)
         const errors = handleErrors(err)
-        res.status(401).json({"error" : errors})
+        res.status(401).send({"error" : errors})
     }
 }
