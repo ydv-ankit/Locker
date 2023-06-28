@@ -34,7 +34,7 @@ const Login = () => {
         body: JSON.stringify(req),
       });
       const data = await response.json();
-
+      console.log(data)
       if (response.ok) {
         document.cookie = "userToken=" + data.success;
         navigate('/data')
