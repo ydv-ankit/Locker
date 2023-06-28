@@ -36,17 +36,17 @@ const Signup = () => {
         },
         body: JSON.stringify(req),
       });
+      const data = await response.json()
       console.log(response)
-      console.log(await response.json())
+      console.log(data)
 
       if (response.ok) {
         navigate('/')
       } else {
         // Handle signup error based on the response
-        const error = await response.json();
-        error_name.current = error.errors.name
-        error_email.current = error.errors.email
-        error_password.current = error.errors.password
+        error_name.current = data.errors.name
+        error_email.current = data.errors.email
+        error_password.current = data.errors.password
       }
     } catch (error) {
       console.error('Error occurred while making the signup request', error);

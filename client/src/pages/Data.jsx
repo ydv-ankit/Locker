@@ -14,7 +14,7 @@ const Data = ({ props }) => {
 
     const getData = async (id) => {
         try {
-            const response = await fetch(`${process.envRAPID_APP_SERVER_HOST}/userdata`, {
+            const response = await fetch(`${process.env.REACT_APP_SERVER_HOST}/userdata`, {
                 method: "POST",
                 headers: {
                     'Content-Type': 'application/json'
@@ -31,7 +31,7 @@ const Data = ({ props }) => {
             }
             return data
         } catch (err) {
-                setError("SERVER ERROR !!")
+                setError("Server unreachable !!")
                 return null
         }
     }

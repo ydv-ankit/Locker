@@ -36,6 +36,7 @@ const Login = () => {
       const data = await response.json();
       console.log(data)
       if (response.ok) {
+        console.log("logged in")
         document.cookie = "userToken=" + data.success;
         navigate('/data')
       } else {

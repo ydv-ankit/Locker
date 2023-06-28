@@ -5,8 +5,6 @@ import { useNavigate } from 'react-router-dom'
 
 const AddData = () => {
   const navigate = useNavigate();
-  const cookie = getCookieValue('userToken')
-  const userID = getPayload(cookie).userID
 
   const [site, setSite] = useState('')
   const [url, setUrl] = useState('')
@@ -23,39 +21,47 @@ const AddData = () => {
   const [emailError, setEmailError] = useState('');
   const [passwordError, setPasswordError] = useState('');
 
-  const req = {
-    userID,
-    site,
-    url,
-    username,
-    email,
-    password,
-    other_details
-  }
-
   const handlesubmit = async (e) => {
     e.preventDefault();
     setIsLoading(true)
-    try {
-      const result = await fetch(`${process.env.RAPID_API_SERVER_HOST}/add`, {
-        method: "POST",
-        headers: {
-          'Content-Type': 'application/json'
-        },
-        body: JSON.stringify(req)
-      })
-      const data = await result.json();
-      if (result.ok) {
-        navigate('/data')
-      } else {
-        setSiteError(data.errors.site)
-        setEmailError(data.errors.email)
-        setPasswordError(data.errors.password)
+
+    const cookie = getCookieValue('userToken')
+    if (cookie) {
+      const userID = getPayload(cookie).userID
+      console.log("adding data")
+      try {
+        const req = {
+          userID,
+          site,
+          url,
+          username,
+          email,
+          password,
+          other_details
+        }
+
+        const result = await fetch(`${process.env.REACT_APP_SERVER_HOST}/add`, {
+          method: "POST",
+          headers: {
+            'Content-Type': 'application/json'
+          },
+          body: JSON.stringify(req)
+        })
+        const data = await result.json();
+        if (result.ok) {
+          navigate('/data')
+        } else {
+          setSiteError(data.errors.site)
+          setEmailError(data.errors.email)
+          setPasswordError(data.errors.password)
+        }
       }
-    }
-    catch (err) {
-      console.log(err)
-      setError('Error Occured !! Cannot add data')
+      catch (err) {
+        console.log(err)
+        setError('Error Occured !! Cannot add data')
+      }
+    }else{
+      navigate('/')
     }
     setIsLoading(false)
   }
