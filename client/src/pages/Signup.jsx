@@ -37,6 +37,7 @@ const Signup = () => {
         body: JSON.stringify(req),
       });
       console.log(response)
+      console.log(await response.json())
 
       if (response.ok) {
         navigate('/')
