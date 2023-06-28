@@ -29,7 +29,6 @@ mongoose.connect(dbURI + dbname, { useNewUrlParser: true, useUnifiedTopology: tr
 
 // routes
 app.get('/', (req, res) => {
-    res.send("server running")
+    res.status(200).end("server running")
 })
-
 app.use(authRoutes)
