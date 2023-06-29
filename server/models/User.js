@@ -80,6 +80,12 @@ dataSchema.statics.getDetails = async function (id) {
     return data;
 }
 
+dataSchema.statics.deleteValue = async function (req) {
+    console.log(req)
+    const data = await this.deleteOne(req)
+    return data.deletedCount;
+}
+
 // models
 const User = mongoose.model('user', userSchema)
 const UserData = mongoose.model('userdata', dataSchema)

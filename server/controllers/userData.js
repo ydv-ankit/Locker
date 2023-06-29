@@ -1,8 +1,8 @@
-const { UserData, User } = require('../models/User')
+const { UserData } = require('../models/User')
 
 const handleerror = (err) => {
     const errors = { site: '', email: '', password: '' }
-    Object.values(err.errors).forEach(({properties}) =>{
+    Object.values(err.errors).forEach(({ properties }) => {
         errors[properties.path] = properties.message
     })
     console.log(errors)
@@ -29,5 +29,27 @@ module.exports.data = async (req, res) => {
     catch (error) {
         console.log("ERROR: cannot get userdata: ", err)
         res.status(401).send({ "error": "cannot get data" })
+    }
+}
+
+module.exports.delete_value = async (req, res) => {
+    let deleted = false;
+    console.log(req.body)
+    if (JSON.stringify(req.body) !== '{}') {
+        console.log("deleting values")
+        try {
+            const data = await UserData.deleteValue(req.body)
+            data ? deleted = true : deleted = false
+        }
+        catch (err) {
+            console.log("error deleting: ", err)
+        }
+    }else{
+        res.status(400).send({ "error": "not deleted" })
+    }
+    if(deleted){
+        res.status(202).send({ "success": "deleted" })
+    }else{
+        res.status(400).send({ "error": "no match found" })
     }
 }
