@@ -1,0 +1,76 @@
+@media (max-width: 700px){
+    .container{
+        margin-top: 25px;
+        width: 300px;
+    }
+
+    .head div{
+        font-size: 16px;
+    }
+
+    .form{
+        width: 100%;
+    }
+
+    .box{
+        padding: 10px;
+    }
+
+    .details input{
+        font-size: 12px;
+    }
+
+    .content{
+        margin-top: 10px;
+    }
+    
+    #page{
+        margin-top: 15em;
+        transform: scale(0.5);
+    }
+
+    .container-wide{
+        height: fit-content;
+        width: 340px;
+    }
+    .card{
+        margin-left: 10px;
+        margin-right: 10px;
+    }
+
+    .sitename{
+        font-size: 14px;
+        margin: 10px 10px;
+    }
+
+    .card-details{
+        font-size: 14px;
+    }
+
+    .error{
+        font-size: 13px;
+    }
+
+    .delete-btn{
+        margin-top: -15px;
+    }
+
+    .add{
+        display: flex;
+        flex-direction: column;
+        margin:auto;
+    }
+    .text{
+        font-size: 13px;
+        color: tomato;
+        text-align: center;
+    }
+
+    .add button{
+        font-size: 10px;
+    }
+    .btn{
+        font-size: 12px;
+    }
+
+}

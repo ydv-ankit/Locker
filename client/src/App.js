@@ -6,6 +6,7 @@ import Data from './pages/Data'
 import AddData from './pages/AddData'
 
 import './styles/App.css'
+import './styles/mediaquery.css'
 import ForgotPassword from "./pages/ForgotPassword";
 
 function App() {

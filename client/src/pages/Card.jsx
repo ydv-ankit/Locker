@@ -42,7 +42,7 @@ const Card = (props) => {
                     body: JSON.stringify(req)
                 })
                 const data = await res.json()
-                data.error ? setError('Cannot delete') : e.target.parentNode.remove()
+                data.error ? setError('Cannot delete') : console.log(e.target.parentNode.parentNode.remove())
             } catch (err) {
                 console.log(err)
             }
@@ -65,7 +65,7 @@ const Card = (props) => {
             <Details name="Password" value={props.password} onclick={clipy} />
             <Details name="Other Details" value={props.other_details} onclick={clipy} />
             <div className="details error">{error}</div>
-            <div className="delete-btn" onClick={deleteme}>Delete</div>
+            <div className="delete-btn" onClick={deleteme}><button>Delete</button></div>
         </div>
     )
 }
